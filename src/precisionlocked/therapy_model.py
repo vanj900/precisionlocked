@@ -420,7 +420,7 @@ class TherapeuticIntervention:
             # Update belief if window is open
             if can_update:
                 mu, F, update_mag = self.agent.perceive_and_update(
-                    y, pi_prior, pi_sensory, learning_rate=0.1
+                    y, pi_prior, pi_sensory, learning_rate=0.01
                 )
             else:
                 # Window closed, no updating

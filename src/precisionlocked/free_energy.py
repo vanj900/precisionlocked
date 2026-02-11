@@ -117,8 +117,19 @@ class VariationalFreeEnergy:
         # High sensory precision -> strong pull toward sensory data
         gradient = pi_sensory * epsilon - pi_prior * mu
         
-        # Update mu
-        mu_new = mu + learning_rate * gradient
+        # Adaptive learning rate based on gradient magnitude
+        # Prevents numerical instability with high precision values
+        grad_norm = np.linalg.norm(gradient)
+        if grad_norm > 10.0:
+            adaptive_lr = learning_rate * 10.0 / grad_norm
+        else:
+            adaptive_lr = learning_rate
+        
+        # Update mu with gradient clipping for stability
+        mu_new = mu + adaptive_lr * gradient
+        
+        # Clip to reasonable range to prevent overflow
+        mu_new = np.clip(mu_new, -100.0, 100.0)
         
         return mu_new
 
