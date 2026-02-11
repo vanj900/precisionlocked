@@ -40,4 +40,7 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+# Generated files
 *.png
+experimental_results.json
