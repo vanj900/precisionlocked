@@ -208,7 +208,7 @@ Step 3: μ = 0.0891
 ...
 ```
 
-Belief converges toward μ_∞ ≈ 0.45 (posterior mean).
+Belief converges toward μ_∞ = 0.45 (posterior mean).
 
 ---
 
